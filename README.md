@@ -1,6 +1,6 @@
 # Gratitude Companion Chatbot
 
-This is a simple gratitude companion chatbot using OpenAI's GPT-4o model. Users can run this project locally to interact with the chatbot.
+This is a gratitude companion chatbot using OpenAI's GPT-4o model. Users can run this project locally to interact with the chatbot.
 
 ## Prerequisites
 
