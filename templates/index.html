@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Gratitude Companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="container">
+        <div id="chat-container">
+            <h1>Gratitude Companion</h1>
+            <p id="initial-message">{{ initial_message }}</p>
+            <div class="input-container">
+                <form id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
+                    <textarea id="message" name="message" placeholder="Message Gratitude Companion"></textarea>
+                </form>
+            </div>
+            <div id="loading">
+                <div class="spinner"></div>
+            </div>
+            <div id="response"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
