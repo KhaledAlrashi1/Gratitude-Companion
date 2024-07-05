@@ -1,10 +1,11 @@
-from flask import Blueprint, request, jsonify, render_template, current_app
+from flask import Blueprint, request, jsonify, render_template, current_app, session
 import openai
 import uuid
 import logging
 import os
 
 main = Blueprint('main', __name__)
+main.secret_key = os.urandom(24)  # Add a secret key for session management
 
 # Helper function to load or create a user ID
 def get_user_id():
@@ -23,14 +24,16 @@ def index():
     user_id = get_user_id()
     openai.api_key = current_app.config['OPENAI_API_KEY']
     try:
+        logging.info("Sending request to OpenAI for initial greeting")
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o",  # Use gpt-4o model
             messages=[
                 {"role": "system", "content": "You are a friendly and supportive chatbot focused on helping people practice gratitude. Your goal is to encourage users to think about the positive aspects of their lives and help them build a habit of gratitude. Be empathetic, cheerful, and motivating in your responses."},
                 {"role": "user", "content": "Greet the user and ask a unique gratitude-related question."}
             ]
         )
         initial_message = response['choices'][0]['message']['content'].strip()
+        logging.info(f"Received initial message: {initial_message}")
     except Exception as e:
         logging.error(f"Error during initial greeting request: {e}")
         initial_message = "Hello! What is something you're grateful for today?"
@@ -45,23 +48,32 @@ def chat():
         user_input = data.get('message')
         user_id = get_user_id()
 
-        # Define the personality prompt
-        personality_prompt = (
-            "You are a friendly and supportive chatbot focused on helping people practice gratitude. "
-            "Your goal is to encourage users to think about the positive aspects of their lives and help them "
-            "build a habit of gratitude. Be empathetic, cheerful, and motivating in your responses.\n"
-            "User: {user_input}\nGPT-4o: "
-        ).format(user_input=user_input)
+        # Retrieve conversation history from the session
+        conversation_history = session.get('conversation_history', [])
 
+        # Append the user's input to the conversation history
+        conversation_history.append({"role": "user", "content": user_input})
+
+        # Define the messages to send to the API
+        messages = [
+            {"role": "system", "content": "You are a friendly and supportive chatbot focused on helping people practice gratitude. Your goal is to encourage users to think about the positive aspects of their lives and help them build a habit of gratitude. Be empathetic, cheerful, and motivating in your responses."}
+        ] + conversation_history
+
+        logging.info(f"Sending conversation history to OpenAI: {messages}")
         response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a friendly and supportive chatbot focused on helping people practice gratitude. Your goal is to encourage users to think about the positive aspects of their lives and help them build a habit of gratitude. Be empathetic, cheerful, and motivating in your responses."},
-                {"role": "user", "content": user_input}
-            ]
+            model="gpt-4o",  # Use gpt-4o model
+            messages=messages
         )
 
         message = response['choices'][0]['message']['content'].strip()
+        logging.info(f"Received response from OpenAI: {message}")
+
+        # Append the chatbot's response to the conversation history
+        conversation_history.append({"role": "assistant", "content": message})
+
+        # Store the updated conversation history in the session
+        session['conversation_history'] = conversation_history
+
         return jsonify({'response': message})
     except Exception as e:
         logging.error(f"Error during /chat request: {e}")

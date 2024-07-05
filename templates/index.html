@@ -12,14 +12,11 @@
     <div class="container">
         <div id="chat-container">
             <h1>Gratitude Companion</h1>
-            <p id="initial-message">{{ initial_message }}</p>
+            <p id="initial-message"></p> <!-- Placeholder for the greeting message -->
             <div class="input-container">
                 <form id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
-                    <textarea id="message" name="message" placeholder="Message Gratitude Companion"></textarea>
+                    <input type="text" id="message" name="message" placeholder="Message Gratitude Companion">
                 </form>
-            </div>
-            <div id="loading">
-                <div class="spinner"></div>
             </div>
             <div id="response"></div>
         </div>
