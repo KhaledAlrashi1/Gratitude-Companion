@@ -1,6 +1,6 @@
-# Gratitude Companion
+# Gratitude Coach
 
-Gratitude Companion is a chatbot uses OpenAI's GPT-4o model. Users can run this project locally to interact with the chatbot.
+Gratitude Coach is a chatbot uses OpenAI's GPT-4o model. Users can run this project locally to interact with the chatbot.
 
 ## Prerequisites
 
