@@ -135,6 +135,3 @@ git push origin feature/YourFeature
 
 - JavaScript to handle chat interactions and manage session storage.
 - Includes functions to load greeting messages and send user messages.
- 
----
-Please let me know if you need any changes or additional details!
