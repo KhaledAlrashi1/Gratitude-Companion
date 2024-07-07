@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(45deg, #ffd700, #800080);
+    background: linear-gradient(45deg, #460fbc, #530053);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     height: 100vh;
@@ -135,25 +135,25 @@ input[type="text"] {
 }
 
 .floating:nth-child(2) {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     top: 40%;
-    left: 80%;
+    left: 90%;
     animation-duration: 8s;
 }
 
 .floating:nth-child(3) {
     width: 50px;
     height: 50px;
-    top: 70%;
+    top: 90%;
     left: 20%;
     animation-duration: 10s;
 }
 
 .floating:nth-child(4) {
-    width: 30px;
-    height: 30px;
-    top: 80%;
+    width: 70px;
+    height: 70px;
+    top: 85%;
     left: 60%;
     animation-duration: 12s;
 }
