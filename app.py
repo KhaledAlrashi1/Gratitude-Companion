@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template_string, session
+from flask import Flask, request, jsonify, render_template, session
 import openai
 import os
 import logging
@@ -44,44 +44,7 @@ def get_greeting():
 
 @app.route('/')
 def index():
-    return render_template_string('''
-    <!doctype html>
-    <html>
-    <head>
-        <title>Gratitude Companion</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    </head>
-    <body>
-        <div class="floating"></div>
-        <div class="floating"></div>
-        <div class="floating"></div>
-        <div class="floating"></div>
-        <div class="container">
-            <div id="chat-container">
-                <h1>Gratitude Companion</h1>
-                <div id="loading-greeting" class="spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <p id="initial-message" style="display:none;"></p> <!-- Placeholder for the greeting message -->
-                <div class="input-container">
-                    <form id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
-                        <input type="text" id="message" name="message" placeholder="Message Gratitude Companion">
-                    </form>
-                </div>
-                <div id="loading" class="spinner" style="display:none;">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div id="response"></div>
-            </div>
-        </div>
-        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    </body>
-    </html>
-    ''')
+    return render_template('index.html')
 
 @app.route('/greeting', methods=['GET'])
 def greeting():
