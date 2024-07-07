@@ -50,7 +50,12 @@ function sendMessage() {
         initialMessageDiv.style.display = 'none'; // Hide the greeting after the first response
     }
 
+    const responseDiv = document.getElementById('response');
+    const userMessage = `<p>You: ${message}</p>`;
+    responseDiv.innerHTML += userMessage; // Store the user's message
+
     document.getElementById('loading').style.display = 'flex'; // Show spinner while waiting for response
+    responseDiv.style.display = 'none'; // Hide the response div
 
     fetch('/chat', {
         method: 'POST',
@@ -61,16 +66,37 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        const botMessage = `<p>${data.response}</p>`; // Removed "Bot:" label
-        document.getElementById('response').innerHTML = botMessage; // Only show the bot's response
-        document.getElementById('loading').style.display = 'none'; // Hide spinner once loaded
+        const botMessage = `<p>${data.response}</p>`; // Remove "Bot:" label
 
-        saveChatHistory(); // Save the chat history after adding bot message
+        // Store the bot's response but only display the latest one
+        const allMessages = responseDiv.innerHTML + botMessage;
+        responseDiv.innerHTML = botMessage; // Only show the latest bot's response
+
+        sessionStorage.setItem('chatHistory', allMessages); // Save full chat history for downloading
+        document.getElementById('loading').style.display = 'none'; // Hide spinner once loaded
+        responseDiv.style.display = 'block'; // Show the response div
+
+        document.getElementById('download-conversation').style.display = 'block'; // Show download button
     })
     .catch(error => {
         console.error('Error:', error);
         document.getElementById('loading').style.display = 'none'; // Hide spinner on error
+        responseDiv.style.display = 'block'; // Show the response div on error
     });
+}
+
+function downloadConversation() {
+    const initialMessage = document.getElementById('initial-message').innerText;
+    const chatHistory = sessionStorage.getItem('chatHistory');
+    const allMessages = initialMessage + '\n\n' + chatHistory;
+    const blob = new Blob([allMessages], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'conversation.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 document.getElementById('message').addEventListener('keypress', function (e) {
