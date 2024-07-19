@@ -76,7 +76,8 @@ function sendMessage() {
         document.getElementById('loading').style.display = 'none'; // Hide spinner once loaded
         responseDiv.style.display = 'block'; // Show the response div
 
-        document.getElementById('download-conversation').style.display = 'block'; // Show download button
+        // Show download dropdown and button
+        document.getElementById('download-container').style.display = 'block';
     })
     .catch(error => {
         console.error('Error:', error);
@@ -86,6 +87,15 @@ function sendMessage() {
 }
 
 function downloadConversation() {
+    const format = document.getElementById('download-format').value;
+    if (format === 'txt') {
+        downloadConversationAsTxt();
+    } else if (format === 'docx') {
+        downloadConversationAsDocx();
+    }
+}
+
+function downloadConversationAsTxt() {
     const initialMessage = document.getElementById('initial-message').innerText;
     const chatHistory = sessionStorage.getItem('chatHistory');
     const allMessages = initialMessage + '\n\n' + chatHistory;
@@ -97,6 +107,29 @@ function downloadConversation() {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+}
+
+function downloadConversationAsDocx() {
+    fetch('/export/docx')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'conversation.docx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 document.getElementById('message').addEventListener('keypress', function (e) {

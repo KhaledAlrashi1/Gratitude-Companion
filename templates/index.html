@@ -29,7 +29,13 @@
                 <div></div>
             </div>
             <div id="response"></div>
-            <button id="download-conversation" onclick="downloadConversation()" style="display: none;">Download Conversation</button>
+            <div id="download-container" style="display: none;">
+                <select id="download-format">
+                    <option value="txt">TXT</option>
+                    <option value="docx">DOCX</option>
+                </select>
+                <button onclick="downloadConversation()">Download Conversation</button>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

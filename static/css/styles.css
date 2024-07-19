@@ -1,7 +1,7 @@
+/* Base styling for the body */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(55deg, #9707e0, #032fd1);
-
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     height: 100vh;
@@ -12,6 +12,7 @@ body {
     margin: 0;
     overflow: hidden;
     position: relative;
+    font-size: 16px; /* Base font size */
 }
 
 @keyframes gradient {
@@ -20,6 +21,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Container styling */
 .container {
     display: flex;
     justify-content: center;
@@ -39,34 +41,40 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    font-size: 1rem; /* Ensure text within maintains base font size */
 }
 
+/* Heading */
 h1 {
-    font-size: 26px;
+    font-size: 2rem; /* Larger heading size */
     margin-bottom: 10px;
 }
 
+/* Initial message */
 #initial-message {
     margin-bottom: 20px;
     line-height: 1.5;
-    font-size: 20px;
+    font-size: 1rem; /* Consistent with base font size */
 }
 
+/* Input container */
 .input-container {
     width: 100%;
     margin-bottom: 20px;
-    margin-top: 20px;  /* Adjust this value to increase space between title and message bar */
+    margin-top: 20px; /* Adjust space between title and message bar */
 }
 
+/* Input text field */
 input[type="text"] {
     width: 100%;
     padding: 19px;
     border-radius: 5px;
     border: none;
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 1rem; /* Consistent with base font size */
 }
 
+/* Loading spinner */
 #loading-greeting, #loading {
     display: flex;
     justify-content: center;
@@ -108,8 +116,9 @@ input[type="text"] {
     }
 }
 
+/* Response text */
 #response {
-    font-size: 20px;
+    font-size: 1rem; /* Consistent with base font size */
     line-height: 1.5;
     text-align: left;
     background: rgba(255, 255, 255, 0.1);
@@ -119,6 +128,7 @@ input[type="text"] {
     width: 97%;
 }
 
+/* Floating elements */
 .floating {
     position: absolute;
     background: rgba(255, 255, 255, 0.2);
@@ -165,6 +175,7 @@ input[type="text"] {
     100% { transform: translateY(0) translateX(0); }
 }
 
+/* Responsive design */
 @media (max-width: 1200px) {
     .container {
         flex-direction: column;
@@ -189,28 +200,46 @@ input[type="text"] {
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 1.5rem; /* Slightly smaller heading on small screens */
     }
 
     input[type="text"] {
-        font-size: 14px;
+        font-size: 0.875rem; /* Smaller font size on small screens */
     }
 
     #response {
-        font-size: 16px;
+        font-size: 0.875rem; /* Smaller font size on small screens */
     }
 }
 
-#download-conversation {
+/* Dropdown and button styling */
+#download-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#download-format {
+    padding: 10px;
+    font-size: 1rem; /* Consistent with base font size */
+    margin-right: 10px;
+    height: 44px; /* Match the button height */
+    background-color: #fff; /* Match the button background color */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#download-container button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 20px 0;
+    font-size: 1rem; /* Consistent with base font size */
     cursor: pointer;
     border-radius: 5px;
+    height: 44px; /* Match the dropdown height */
 }
