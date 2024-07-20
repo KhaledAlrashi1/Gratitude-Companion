@@ -1,7 +1,9 @@
 /* Base styling for the body */
 body {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Times New Roman', Times, serif; /* Apply the Times New Roman font */
     background: linear-gradient(55deg, #9707e0, #032fd1);
+    /* background: linear-gradient(55deg, #fcc707, #13b900); */
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     height: 100vh;
@@ -35,43 +37,71 @@ body {
 #chat-container {
     background: rgba(255, 255, 255, 0.2);
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    font-size: 1rem; /* Ensure text within maintains base font size */
+    align-items: center; /* Center align content */
+    font-size: 1.3rem; /* Ensure text within maintains base font size */
+}
+
+/* Title container */
+.title-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between logo and title */
+}
+
+/* Logo */
+.logo {
+    height: 35px; /* Adjust size as needed */
+    width: auto;
+    margin-top: 0px;
+    margin-bottom: 4px;
+
 }
 
 /* Heading */
 h1 {
     font-size: 2rem; /* Larger heading size */
-    margin-bottom: 10px;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 30px; /* Increase bottom margin */
+    text-align: center; /* Center align heading */
 }
 
 /* Initial message */
 #initial-message {
     margin-bottom: 20px;
     line-height: 1.5;
-    font-size: 1rem; /* Consistent with base font size */
+    font-size: 1.3rem; /* Consistent with base font size */
+    text-align: center; /* Center align text */
 }
 
 /* Input container */
 .input-container {
-    width: 100%;
+    width: 99.5%; /* Match the width of the response box */
     margin-bottom: 20px;
     margin-top: 20px; /* Adjust space between title and message bar */
 }
 
-/* Input text field */
 input[type="text"] {
-    width: 100%;
-    padding: 19px;
+    width: 100%; /* Ensure input spans the full width */
+    padding: 15px; /* Adjust padding */
     border-radius: 5px;
     border: none;
     box-sizing: border-box;
-    font-size: 1rem; /* Consistent with base font size */
+    font-size: 1.3rem; /* Consistent with base font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: box-shadow 0.3s ease; /* Subtle shadow transition */
+    height: 50px; /* Ensure consistent height */
+    text-align: center; /* Center align placeholder text */
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+    outline: none; /* Remove default outline */
 }
 
 /* Loading spinner */
@@ -118,14 +148,18 @@ input[type="text"] {
 
 /* Response text */
 #response {
-    font-size: 1rem; /* Consistent with base font size */
+    font-size: 1.3rem; /* Consistent with base font size */
     line-height: 1.5;
-    text-align: left;
+    text-align: center; /* Center align text */
     background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
+    padding: 12px;
     border-radius: 5px;
     min-height: 50px;
-    width: 97%;
+    width: 97%; /* Ensure response spans the full width */
+    margin: 0 auto; /* Center align response */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    align-items: center; /* Center align content */
+
 }
 
 /* Floating elements */
@@ -218,16 +252,23 @@ input[type="text"] {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    /* width: 100%; */
 }
 
 #download-format {
-    padding: 10px;
-    font-size: 1rem; /* Consistent with base font size */
+    padding: 6px;
+    font-size: 0.8rem; /* Consistent with base font size */
     margin-right: 10px;
     height: 44px; /* Match the button height */
     background-color: #fff; /* Match the button background color */
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: box-shadow 0.3s ease; /* Subtle shadow transition */
+}
+
+#download-format:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 #download-container button {
@@ -238,8 +279,19 @@ input[type="text"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem; /* Consistent with base font size */
+    font-size: 0.8rem; /* Consistent with base font size */
     cursor: pointer;
     border-radius: 5px;
     height: 44px; /* Match the dropdown height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: box-shadow 0.3s ease; /* Subtle shadow transition */
+
+}
+
+#download-container button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+#download-container button i {
+    font-size: 1rem; /* Adjust icon size */
 }

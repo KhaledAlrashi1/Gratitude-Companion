@@ -3,6 +3,7 @@
 <head>
     <title>Gratitude Companion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome link -->
 </head>
 <body>
     <div class="floating floating1"></div>
@@ -11,7 +12,10 @@
     <div class="floating floating4"></div>
     <div class="container">
         <div id="chat-container">
-            <h1>Gratitude Companion</h1>
+            <div class="title-container">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+                <h1>Gratitude Companion</h1>
+            </div>
             <div id="loading-greeting" class="spinner">
                 <div></div>
                 <div></div>
@@ -29,12 +33,14 @@
                 <div></div>
             </div>
             <div id="response"></div>
-            <div id="download-container" style="display: none;">
+            <div id="download-container"  style="display: none;">
                 <select id="download-format">
-                    <option value="txt">TXT</option>
-                    <option value="docx">DOCX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="DOCX">DOCX</option>
                 </select>
-                <button onclick="downloadConversation()">Download Conversation</button>
+                <button onclick="downloadConversation()">
+                    <i class="fas fa-download"></i> <!-- Font Awesome download icon -->
+                </button>
             </div>
         </div>
     </div>
