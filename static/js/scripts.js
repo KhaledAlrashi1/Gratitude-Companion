@@ -66,6 +66,14 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
+        if (data.error) {
+            const limitMessage = `<p>You have reached the maximum number of API requests allowed for today.</p>`;
+            responseDiv.innerHTML = limitMessage;
+            document.getElementById('loading').style.display = 'none'; // Hide spinner on error
+            responseDiv.style.display = 'block'; // Show the response div
+            return;
+        }
+
         const botMessage = `<p>${data.response}</p>`; // Remove "Bot:" label
 
         // Store the bot's response but only display the latest one
@@ -81,6 +89,8 @@ function sendMessage() {
     })
     .catch(error => {
         console.error('Error:', error);
+        const errorMessage = `<p>Error: ${error.message}</p>`;
+        responseDiv.innerHTML = errorMessage;
         document.getElementById('loading').style.display = 'none'; // Hide spinner on error
         responseDiv.style.display = 'block'; // Show the response div on error
     });
@@ -88,9 +98,9 @@ function sendMessage() {
 
 function downloadConversation() {
     const format = document.getElementById('download-format').value;
-    if (format === 'txt') {
+    if (format === 'TXT') {
         downloadConversationAsTxt();
-    } else if (format === 'docx') {
+    } else if (format === 'DOCX') {
         downloadConversationAsDocx();
     }
 }

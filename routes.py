@@ -7,6 +7,27 @@ import os
 from docx import Document
 from io import BytesIO
 from docx.shared import RGBColor
+import json
+
+def read_request_count(session_id):
+    try:
+        with open('request_counts.json', 'r') as f:
+            data = json.load(f)
+            return data.get(session_id, 0)
+    except FileNotFoundError:
+        return 0
+
+def write_request_count(session_id, count):
+    try:
+        with open('request_counts.json', 'r') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        data = {}
+
+    data[session_id] = count
+
+    with open('request_counts.json', 'w') as f:
+        json.dump(data, f)
 
 main = Blueprint('main', __name__)
 
@@ -17,13 +38,6 @@ client = OpenAI(
 
 if not client:
     raise ValueError("The OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.")
-
-
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-
-# if not openai.api_key:
-#     raise ValueError("The OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.")
-
 
 # Load greeting messages from CSV
 greeting_messages = pd.read_csv('greeting_messages.csv')['greeting_message'].tolist()
@@ -37,6 +51,14 @@ def index():
     except Exception as e:
         logging.error(f"Error fetching initial greeting message: {e}")
         initial_message = "Hello! What is something you're grateful for today?"
+
+    # Initialize the request counter if not already present
+    if 'session_id' not in session:
+        session['session_id'] = os.urandom(24).hex()
+    
+    session_id = session['session_id']
+    request_count = read_request_count(session_id)
+    session['request_count'] = request_count
 
     return render_template('index.html', initial_message=initial_message)
 
@@ -52,6 +74,17 @@ def greeting():
 @main.route('/chat', methods=['POST'])
 def chat():
     try:
+        session_id = session.get('session_id')
+        if not session_id:
+            session_id = os.urandom(24).hex()
+            session['session_id'] = session_id
+
+        request_count = read_request_count(session_id)
+
+        # Check if the user has reached the API request limit
+        if request_count >= 10:
+            return jsonify({'error': 'You have reached the maximum number of API requests allowed.'}), 403
+
         data = request.json
         user_input = data.get('message')
 
@@ -89,7 +122,6 @@ def chat():
             max_tokens=150
         )
 
-        # bot_response = response['choices'][0]['message']['content'].strip()
         bot_response = response.choices[0].message.content
 
         logging.info(f"Received response from OpenAI: {bot_response}")
@@ -100,6 +132,10 @@ def chat():
         # Store the updated conversation history in the session
         session['conversation_history'] = conversation_history
 
+        # Increment the request counter
+        request_count += 1
+        write_request_count(session_id, request_count)
+
         return jsonify({'response': bot_response})
     except Exception as e:
         logging.error(f"Error during /chat request: {e}")
@@ -109,6 +145,9 @@ def chat():
 def export_docx():
     try:
         conversation_history = session.get('conversation_history', [])
+        if not conversation_history:
+            return jsonify({'error': 'No conversation history found.'}), 400
+
         doc = Document()
         doc.add_heading('Conversation Log', 0)
 
@@ -138,3 +177,14 @@ def export_docx():
     except Exception as e:
         logging.error(f"Error during DOCX export: {e}")
         return jsonify({'error': str(e)}), 500
+
+@main.route('/reset', methods=['POST'])
+def reset():
+    session_id = session.get('session_id')
+    if not session_id:
+        session_id = os.urandom(24).hex()
+        session['session_id'] = session_id
+
+    write_request_count(session_id, 0)
+    session.pop('conversation_history', None)
+    return jsonify({'message': 'Session reset successful.'})
