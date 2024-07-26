@@ -1,4 +1,4 @@
-# Gratitude Companion ![(App)](https://gratitude-companion-8017c39a85f8.herokuapp.com/)
+# Gratitude Companion [(App)](https://gratitude-companion-8017c39a85f8.herokuapp.com/)
 ![Gratitude](/images/Gratitude.png)
 
 ## Overview
