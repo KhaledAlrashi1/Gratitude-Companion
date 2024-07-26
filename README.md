@@ -2,7 +2,7 @@
 ![Gratitude](/images/Gratitude.png)
 
 ## Overview
-Gratitude Companion is a friendly and supportive chatbot designed to help users practice gratitude. The chatbot encourages users to think about the positive aspects of their lives and helps them build a habit of gratitude through empathetic and cheerful interactions.
+Gratitude Companion is a friendly and supportive chatbot designed to help users practice gratitude. The chatbot encourages users to think about the positive aspects of their lives and helps them build a habit of gratitude through thought-provoking questions and empathetic interactions.
 
 
 ## Backgorund
