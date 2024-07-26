@@ -1,11 +1,10 @@
 annotated-types==0.7.0
 anyio==4.4.0
 blinker==1.8.2
-Bottleneck @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_e7wwl52wn1/croot/bottleneck_1709075893359/work
 certifi==2024.7.4
 click==8.1.7
 distro==1.9.0
-Flask==3.0.3
+flask==3.0.3
 gunicorn==22.0.0
 h11==0.14.0
 httpcore==1.0.5
@@ -13,23 +12,14 @@ httpx==0.27.0
 idna==3.7
 itsdangerous==2.2.0
 Jinja2==3.1.4
-lxml @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a788bsbg69/croot/lxml_1715288992007/work
 MarkupSafe==2.1.5
-numexpr @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/numexpr_1699237935415/work
-numpy @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a51i_mbs7m/croot/numpy_and_numpy_base_1708638620867/work/dist/numpy-1.26.4-cp312-cp312-macosx_11_0_arm64.whl#sha256=37afb6b734a197702d848df93bd67c10b52f6467d56e518950d84b6b1c949d27
 openai==1.37.1
 packaging==24.1
-pandas @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_b53hgou29t/croot/pandas_1718308972393/work/dist/pandas-2.2.2-cp312-cp312-macosx_11_0_arm64.whl#sha256=1956b71d1baac8b370fd9deac6100aadefda112447dca816a81ecbf3ea4eb3e6
+pandas==2.2.2
 pydantic==2.8.2
 pydantic_core==2.20.1
-python-dateutil @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_66ud1l42_h/croot/python-dateutil_1716495741162/work
-python-docx @ file:///home/conda/feedstock_root/build_artifacts/python-docx_1714608302440/work
-pytz @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a4b76c83ik/croot/pytz_1713974318928/work
 setuptools==69.5.1
-six @ file:///tmp/build/80754af9/six_1644875935023/work
 sniffio==1.3.1
 tqdm==4.66.4
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1717802530399/work
-tzdata @ file:///croot/python-tzdata_1690578112552/work
 Werkzeug==3.0.3
 wheel==0.43.0
