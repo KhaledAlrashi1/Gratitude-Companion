@@ -4,9 +4,9 @@ import logging
 import random
 from openai import OpenAI
 import os
-from docx import Document
+# from docx import Document
 from io import BytesIO
-from docx.shared import RGBColor
+# from docx.shared import RGBColor
 import json
 
 def read_request_count(session_id):
@@ -141,42 +141,42 @@ def chat():
         logging.error(f"Error during /chat request: {e}")
         return jsonify({'error': str(e)}), 500
 
-@main.route('/export/docx')
-def export_docx():
-    try:
-        conversation_history = session.get('conversation_history', [])
-        if not conversation_history:
-            return jsonify({'error': 'No conversation history found.'}), 400
+# @main.route('/export/docx')
+# def export_docx():
+#     try:
+#         conversation_history = session.get('conversation_history', [])
+#         if not conversation_history:
+#             return jsonify({'error': 'No conversation history found.'}), 400
 
-        doc = Document()
-        doc.add_heading('Conversation Log', 0)
+#         doc = Document()
+#         doc.add_heading('Conversation Log', 0)
 
-        for message in conversation_history:
-            role = message['role']
-            content = message['content']
-            paragraph = doc.add_paragraph()
-            if role == "user":
-                run = paragraph.add_run(f'User: {content}')
-                run.bold = True
-                run.font.color.rgb = RGBColor(0x00, 0x00, 0xFF)
-            else:
-                run = paragraph.add_run(f'Assistant: {content}')
-                run.font.color.rgb = RGBColor(0x00, 0x80, 0x00)
+#         for message in conversation_history:
+#             role = message['role']
+#             content = message['content']
+#             paragraph = doc.add_paragraph()
+#             if role == "user":
+#                 run = paragraph.add_run(f'User: {content}')
+#                 run.bold = True
+#                 run.font.color.rgb = RGBColor(0x00, 0x00, 0xFF)
+#             else:
+#                 run = paragraph.add_run(f'Assistant: {content}')
+#                 run.font.color.rgb = RGBColor(0x00, 0x80, 0x00)
 
-        # Save to a BytesIO stream
-        file_stream = BytesIO()
-        doc.save(file_stream)
-        file_stream.seek(0)
+#         # Save to a BytesIO stream
+#         file_stream = BytesIO()
+#         doc.save(file_stream)
+#         file_stream.seek(0)
 
-        return send_file(
-            file_stream,
-            as_attachment=True,
-            download_name='conversation.docx',
-            mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-        )
-    except Exception as e:
-        logging.error(f"Error during DOCX export: {e}")
-        return jsonify({'error': str(e)}), 500
+#         return send_file(
+#             file_stream,
+#             as_attachment=True,
+#             download_name='conversation.docx',
+#             mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+#         )
+#     except Exception as e:
+#         logging.error(f"Error during DOCX export: {e}")
+#         return jsonify({'error': str(e)}), 500
 
 @main.route('/reset', methods=['POST'])
 def reset():
