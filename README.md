@@ -1,16 +1,20 @@
-# Gratitude Companion
+# Gratitude Companion [(App)](https://gratitude-companion-8017c39a85f8.herokuapp.com/)
 ![Gratitude](/images/Gratitude.png)
 
 ## Overview
-Gratitude Companion is a friendly and supportive chatbot designed to help users practice gratitude. The chatbot encourages users to think about the positive aspects of their lives and helps them build a habit of gratitude through empathetic, cheerful, and motivating interactions.
+Gratitude Companion is a friendly and supportive chatbot designed to help users practice gratitude. The chatbot encourages users to think about the positive aspects of their lives and helps them build a habit of gratitude through thought-provoking questions and empathetic interactions.
 
 
 ## Backgorund
-I’ve been practicing the habit of gratitude ever since I read “The 7 Habits of Highly Effective People” by listing things I’m grateful for each day. However, there are days when I struggle to think of something to write, and I often overlook important aspects of my life, taking them for granted. To address this, I envisioned using ChatGPT to help me identify these overlooked elements and enhance my gratitude practice.
+For some time, I’ve been practicing gratitude daily, and it has been life-transformative. However, I often struggle to find new things to write about. I realized that asking unique questions could help uncover overlooked aspects of my life. So, I started using LLMs like Groq and ChatGPT to generate thought-provoking questions, leading to more meaningful gratitude sessions. This idea blossomed into the creation of Gratitude Companion after completing the DeepLearning.AI course.
 
-After completing the “Open Source Models with Hugging Face” course by DeepLearning.AI, I was inspired to create my first AI-powered application. This is how Gratitude Companion was born.
+After completing the “Open Source Models with Hugging Face” course by DeepLearning.AI, I used the inspiration and knowledge gained to develop my first AI-powered application: Gratitude Companion.
 
-Gratitude Companion is a friendly chatbot designed to help you cultivate a daily gratitude practice. By asking engaging and thought-provoking questions, Gratitude Companion encourages you to reflect on various aspects of your life, helping you recognize and appreciate the many blessings you might otherwise miss. This AI-powered application makes practicing gratitude more enjoyable and impactful, ensuring you never run out of things to be thankful for.
+Gratitude Companion is a chatbot designed to enhance your gratitude practice by asking engaging questions. It integrates the recently developed GPT-4o mini for better text processing and understanding. What sets it apart is its training on online blogs shared by people, turning relevant blog content into live conversations. This allows users to share important memories and experiences, creating a sense of connection and realizing the commonality of human experiences.
+
+Why should we practice gratitude? It helps us see the positive aspects of life, reminds us what’s truly important, encourages us to live in the present moment, reduces social comparison, and strengthens our relationships.
+
+Gratitude: A big thank you to the DeepLearning.AI and Hugging Face teams for developing such an amazing course that led to the creation of this application.
 
 ---
 
@@ -21,18 +25,16 @@ Gratitude Companion is a friendly chatbot designed to help you cultivate a daily
 ---
 ## Features
 
-- Generates unique greeting messages to welcome users.
 - Engages users in meaningful conversations about gratitude.
 - Stores conversation history for a personalized experience.
 - Responsive web interface with real-time chat capabilities.
-- Option to download conversation history as TXT or DOCX files.
 
 ---
 ## Installation
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.11 or higher
 - Flask
 - OpenAI API key
 
@@ -119,12 +121,6 @@ git commit -m 'Add your feature'
 git push origin feature/YourFeature
 ```
 5. Create a pull request
-
----
-## Acknowledgments
-
-- Thanks to OpenAI for providing the GPT-4o-mini API.
-- Special thanks to everyone who has contributed to this project.
 
 --- 
 ## Detailed Breakdown of Files
