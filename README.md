@@ -6,15 +6,12 @@ Gratitude Companion is a friendly and supportive chatbot designed to help users 
 
 
 ## Backgorund
-For some time, I’ve been practicing gratitude daily, and it has been life-transformative. However, I often struggle to find new things to write about. I realized that asking unique questions could help uncover overlooked aspects of my life. So, I started using LLMs like Groq and ChatGPT to generate thought-provoking questions, leading to more meaningful gratitude sessions. This idea blossomed into the creation of Gratitude Companion after completing the DeepLearning.AI course.
-
-After completing the “Open Source Models with Hugging Face” course by DeepLearning.AI, I used the inspiration and knowledge gained to develop my first AI-powered application: Gratitude Companion.
+For some time, I’ve been practicing gratitude daily, and it has been life-transformative. However, I often struggle to find new things to write about. I realized that asking unique questions could help uncover overlooked aspects of my life. So, I started using LLMs like Groq and ChatGPT to generate thought-provoking questions, leading to more meaningful gratitude sessions.
 
 Gratitude Companion is a chatbot designed to enhance your gratitude practice by asking engaging questions. It integrates the recently developed GPT-4o mini for better text processing and understanding. What sets it apart is its training on online blogs shared by people, turning relevant blog content into live conversations. This allows users to share important memories and experiences, creating a sense of connection and realizing the commonality of human experiences.
 
 Why should we practice gratitude? It helps us see the positive aspects of life, reminds us what’s truly important, encourages us to live in the present moment, reduces social comparison, and strengthens our relationships.
 
-Gratitude: A big thank you to the DeepLearning.AI and Hugging Face teams for developing such an amazing course that led to the creation of this application.
 
 ---
 
@@ -25,9 +22,11 @@ Gratitude: A big thank you to the DeepLearning.AI and Hugging Face teams for dev
 ---
 ## Features
 
-- Engages users in meaningful conversations about gratitude.
-- Stores conversation history for a personalized experience.
-- Responsive web interface with real-time chat capabilities.
+- The User gets to practice gratitdue through thought-provoking questions.
+- The User gets to choose a topic or an aspect of their they would like to refelct on
+- User gets to download their conversation history for a personalized experience.
+- User gets to choose how long the gratitude session will be 
+- The app has a responsive web interface with real-time chat capabilities.
 
 ---
 ## Installation

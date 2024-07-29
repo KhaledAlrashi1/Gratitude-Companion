@@ -3,17 +3,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
     loadGreeting(); // Load a unique greeting from the server
 });
 
+/**
+ * Clears the chat history from sessionStorage and the response div.
+ */
 function clearChatHistory() {
     sessionStorage.removeItem('chatHistory');
     const responseDiv = document.getElementById('response');
     responseDiv.innerHTML = '';
 }
 
+/**
+ * Saves the current chat history from the response div to sessionStorage.
+ */
 function saveChatHistory() {
     const responseDiv = document.getElementById('response');
     sessionStorage.setItem('chatHistory', responseDiv.innerHTML);
 }
 
+/**
+ * Loads the chat history from sessionStorage and displays it in the response div.
+ */
 function loadChatHistory() {
     const responseDiv = document.getElementById('response');
     const chatHistory = sessionStorage.getItem('chatHistory');
@@ -22,6 +31,9 @@ function loadChatHistory() {
     }
 }
 
+/**
+ * Loads a unique greeting message from the server and displays it.
+ */
 function loadGreeting() {
     document.getElementById('loading-greeting').style.display = 'flex'; // Show spinner while loading
 
@@ -39,6 +51,9 @@ function loadGreeting() {
         });
 }
 
+/**
+ * Sends a user message to the server and handles the response.
+ */
 function sendMessage() {
     var message = document.getElementById('message').value;
     if (message.trim() === "") return;
@@ -74,7 +89,7 @@ function sendMessage() {
             return;
         }
 
-        const botMessage = `<p>${data.response}</p>`; // Remove "Bot:" label
+        const botMessage = `<p>${data.response}</p>`; // Display the bot's response
 
         // Store the bot's response but only display the latest one
         const allMessages = responseDiv.innerHTML + botMessage;
@@ -96,6 +111,9 @@ function sendMessage() {
     });
 }
 
+/**
+ * Initiates the download of the conversation history in the selected format.
+ */
 function downloadConversation() {
     const format = document.getElementById('download-format').value;
     if (format === 'TXT') {
@@ -105,6 +123,9 @@ function downloadConversation() {
     }
 }
 
+/**
+ * Downloads the conversation history as a text file.
+ */
 function downloadConversationAsTxt() {
     const initialMessage = document.getElementById('initial-message').innerText;
     const chatHistory = sessionStorage.getItem('chatHistory');
@@ -119,29 +140,33 @@ function downloadConversationAsTxt() {
     document.body.removeChild(a);
 }
 
-// function downloadConversationAsDocx() {
-//     fetch('/export/docx')
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             return response.blob();
-//         })
-//         .then(blob => {
-//             const url = window.URL.createObjectURL(blob);
-//             const a = document.createElement('a');
-//             a.style.display = 'none';
-//             a.href = url;
-//             a.download = 'conversation.docx';
-//             document.body.appendChild(a);
-//             a.click();
-//             window.URL.revokeObjectURL(url);
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-// }
+/**
+ * Downloads the conversation history as a DOCX file.
+ */
+function downloadConversationAsDocx() {
+    fetch('/export/docx')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'conversation.docx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
 
+// Add event listener for the Enter key to send a message
 document.getElementById('message').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault(); // Prevent form submission

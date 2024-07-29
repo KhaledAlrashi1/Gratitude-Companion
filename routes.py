@@ -9,6 +9,7 @@ from io import BytesIO
 # from docx.shared import RGBColor
 import json
 
+# Functions to read and write request counts to a JSON file
 def read_request_count(session_id):
     try:
         with open('request_counts.json', 'r') as f:
@@ -29,6 +30,7 @@ def write_request_count(session_id, count):
     with open('request_counts.json', 'w') as f:
         json.dump(data, f)
 
+# Create a Blueprint for the main routes
 main = Blueprint('main', __name__)
 
 # Load OpenAI API key from environment variable
@@ -36,12 +38,14 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
+# Raise an error if the OpenAI API key is not set
 if not client:
     raise ValueError("The OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.")
 
-# Load greeting messages from CSV
+# Load greeting messages from a CSV file
 greeting_messages = pd.read_csv('greeting_messages.csv')['greeting_message'].tolist()
 
+# Route for the main page
 @main.route('/')
 def index():
     try:
@@ -62,6 +66,7 @@ def index():
 
     return render_template('index.html', initial_message=initial_message)
 
+# Route to get a random greeting message
 @main.route('/greeting', methods=['GET'])
 def greeting():
     try:
@@ -71,6 +76,7 @@ def greeting():
         logging.error(f"Error generating greeting: {e}")
         return jsonify({'error': str(e)}), 500
 
+# Route to handle chat messages
 @main.route('/chat', methods=['POST'])
 def chat():
     try:
@@ -141,6 +147,7 @@ def chat():
         logging.error(f"Error during /chat request: {e}")
         return jsonify({'error': str(e)}), 500
 
+# # Route to export conversation history as a DOCX file
 # @main.route('/export/docx')
 # def export_docx():
 #     try:
@@ -178,6 +185,7 @@ def chat():
 #         logging.error(f"Error during DOCX export: {e}")
 #         return jsonify({'error': str(e)}), 500
 
+# Route to reset the session and request count
 @main.route('/reset', methods=['POST'])
 def reset():
     session_id = session.get('session_id')

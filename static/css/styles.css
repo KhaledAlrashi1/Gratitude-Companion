@@ -2,21 +2,22 @@
 body {
     /* font-family: 'Roboto', sans-serif; */
     font-family: 'Times New Roman', Times, serif; /* Apply the Times New Roman font */
-    background: linear-gradient(55deg, #9707e0, #032fd1);
+    background: linear-gradient(55deg, #9707e0, #032fd1); /* Gradient background */
     /* background: linear-gradient(55deg, #fcc707, #13b900); */
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    margin: 0;
-    overflow: hidden;
-    position: relative;
+    background-size: 400% 400%; /* Background size for animation */
+    animation: gradient 10s ease infinite; /* Gradient animation */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    color: #fff; /* Text color */
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Relative positioning for child elements */
     font-size: 16px; /* Base font size */
 }
 
+/* Keyframes for gradient animation */
 @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -25,110 +26,115 @@ body {
 
 /* Container styling */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    width: 70%;
-    max-width: 1200px;
-    z-index: 1;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the start */
+    gap: 20px; /* Space between items */
+    width: 70%; /* Container width */
+    max-width: 1200px; /* Maximum width */
+    z-index: 1; /* Stack order */
 }
 
+/* Chat container styling */
 #chat-container {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 30px; /* Padding */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in width/height */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Column layout */
     align-items: center; /* Center align content */
-    font-size: 1.3rem; /* Ensure text within maintains base font size */
+    font-size: 1.3rem; /* Base font size */
 }
 
-/* Title container */
+/* Title container styling */
 .title-container {
-    display: flex;
+    display: flex; /* Flexbox for alignment */
     align-items: center; /* Align items vertically */
     gap: 10px; /* Space between logo and title */
 }
 
-/* Logo */
+/* Logo styling */
 .logo {
-    height: 35px; /* Adjust size as needed */
-    width: auto;
-    margin-top: 0px;
-    margin-bottom: 4px;
-
+    height: 35px; /* Logo height */
+    width: auto; /* Maintain aspect ratio */
+    margin-top: 0px; /* Top margin */
+    margin-bottom: 4px; /* Bottom margin */
 }
 
-/* Heading */
+/* Heading styling */
 h1 {
     font-size: 2rem; /* Larger heading size */
-    font-family: 'Pacifico', cursive;
+    font-family: 'Pacifico', cursive; /* Pacifico font */
     margin-bottom: 30px; /* Increase bottom margin */
     text-align: center; /* Center align heading */
 }
 
-/* Initial message */
+/* Initial message styling */
 #initial-message {
-    margin-bottom: 20px;
-    line-height: 1.5;
+    margin-bottom: 20px; /* Bottom margin */
+    line-height: 1.5; /* Line height */
     font-size: 1.3rem; /* Consistent with base font size */
     text-align: center; /* Center align text */
 }
 
-/* Input container */
+/* Input container styling */
 .input-container {
     width: 99.5%; /* Match the width of the response box */
-    margin-bottom: 20px;
-    margin-top: 20px; /* Adjust space between title and message bar */
+    margin-bottom: 20px; /* Bottom margin */
+    margin-top: 20px; /* Top margin */
 }
 
+/* Input field styling */
 input[type="text"] {
-    width: 100%; /* Ensure input spans the full width */
-    padding: 15px; /* Adjust padding */
-    border-radius: 5px;
-    border: none;
-    box-sizing: border-box;
+    width: 100%; /* Full width */
+    padding: 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+    box-sizing: border-box; /* Include padding in width/height */
     font-size: 1.3rem; /* Consistent with base font size */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    transition: box-shadow 0.3s ease; /* Subtle shadow transition */
-    height: 50px; /* Ensure consistent height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    transition: box-shadow 0.3s ease; /* Shadow transition */
+    height: 50px; /* Consistent height */
     text-align: center; /* Center align placeholder text */
 }
 
+/* Input field focus state */
 input[type="text"]:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
     outline: none; /* Remove default outline */
 }
 
-/* Loading spinner */
+/* Loading spinner styling */
 #loading-greeting, #loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    width: 40px;
-    margin: 20px auto;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 40px; /* Height */
+    width: 40px; /* Width */
+    margin: 20px auto; /* Center align and margin */
 }
 
+/* Spinner container */
 .spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
+/* Spinner dots */
 .spinner div {
-    width: 8px;
-    height: 8px;
-    background-color: #ffffff;
-    border-radius: 100%;
-    animation: spinner 1.2s infinite ease-in-out both;
-    margin: 0 2px;
+    width: 8px; /* Width */
+    height: 8px; /* Height */
+    background-color: #ffffff; /* Background color */
+    border-radius: 100%; /* Rounded corners */
+    animation: spinner 1.2s infinite ease-in-out both; /* Animation */
+    margin: 0 2px; /* Margin between dots */
 }
 
+/* Animation delay for spinner dots */
 .spinner div:nth-child(1) {
     animation-delay: -0.32s;
 }
@@ -137,102 +143,104 @@ input[type="text"]:focus {
     animation-delay: -0.16s;
 }
 
+/* Keyframes for spinner animation */
 @keyframes spinner {
     0%, 80%, 100% {
-        transform: scale(0);
+        transform: scale(0); /* Scale to 0 */
     }
     40% {
-        transform: scale(1);
+        transform: scale(1); /* Scale to 1 */
     }
 }
 
-/* Response text */
+/* Response text styling */
 #response {
     font-size: 1.3rem; /* Consistent with base font size */
-    line-height: 1.5;
+    line-height: 1.5; /* Line height */
     text-align: center; /* Center align text */
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px;
-    border-radius: 5px;
-    min-height: 50px;
-    width: 97%; /* Ensure response spans the full width */
-    margin: 0 auto; /* Center align response */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 12px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    min-height: 50px; /* Minimum height */
+    width: 97%; /* Full width */
+    margin: 0 auto; /* Center align */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
     align-items: center; /* Center align content */
-
 }
 
 /* Floating elements */
 .floating {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: float 10s ease-in-out infinite;
+    position: absolute; /* Absolute positioning */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    border-radius: 50%; /* Rounded corners */
+    opacity: 0.6; /* Opacity */
+    animation: float 10s ease-in-out infinite; /* Floating animation */
 }
 
+/* Floating element sizes and positions */
 .floating:nth-child(1) {
-    width: 60px;
-    height: 60px;
-    top: 20%;
-    left: 10%;
-    animation-duration: 6s;
+    width: 60px; /* Width */
+    height: 60px; /* Height */
+    top: 20%; /* Top position */
+    left: 10%; /* Left position */
+    animation-duration: 6s; /* Animation duration */
 }
 
 .floating:nth-child(2) {
-    width: 45px;
-    height: 45px;
-    top: 40%;
-    left: 90%;
-    animation-duration: 8s;
+    width: 45px; /* Width */
+    height: 45px; /* Height */
+    top: 40%; /* Top position */
+    left: 90%; /* Left position */
+    animation-duration: 8s; /* Animation duration */
 }
 
 .floating:nth-child(3) {
-    width: 50px;
-    height: 50px;
-    top: 90%;
-    left: 20%;
-    animation-duration: 10s;
+    width: 50px; /* Width */
+    height: 50px; /* Height */
+    top: 90%; /* Top position */
+    left: 20%; /* Left position */
+    animation-duration: 10s; /* Animation duration */
 }
 
 .floating:nth-child(4) {
-    width: 70px;
-    height: 70px;
-    top: 85%;
-    left: 60%;
-    animation-duration: 12s;
+    width: 70px; /* Width */
+    height: 70px; /* Height */
+    top: 85%; /* Top position */
+    left: 60%; /* Left position */
+    animation-duration: 12s; /* Animation duration */
 }
 
+/* Keyframes for floating animation */
 @keyframes float {
     0% { transform: translateY(0) translateX(0); }
     50% { transform: translateY(-40px) translateX(20px); }
     100% { transform: translateY(0) translateX(0); }
 }
 
-/* Responsive design */
+/* Responsive design for medium screens */
 @media (max-width: 1200px) {
     .container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Column layout */
+        align-items: center; /* Center align items */
     }
 
     #chat-container {
-        width: 90%;
-        margin-left: 0;
-        margin-bottom: 20px;
+        width: 90%; /* Width */
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 20px; /* Bottom margin */
     }
 }
 
+/* Responsive design for small screens */
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 10px; /* Padding */
     }
 
     #chat-container {
-        padding: 15px;
-        width: 100%;
+        padding: 15px; /* Padding */
+        width: 100%; /* Full width */
     }
-
     h1 {
         font-size: 1.5rem; /* Slightly smaller heading on small screens */
     }
@@ -248,21 +256,21 @@ input[type="text"]:focus {
 
 /* Dropdown and button styling */
 #download-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 20px; /* Top margin */
     /* width: 100%; */
 }
 
 #download-format {
-    padding: 6px;
-    font-size: 0.8rem; /* Consistent with base font size */
-    margin-right: 10px;
+    padding: 6px; /* Padding */
+    font-size: 0.8rem; /* Font size */
+    margin-right: 10px; /* Right margin */
     height: 44px; /* Match the button height */
-    background-color: #fff; /* Match the button background color */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     transition: box-shadow 0.3s ease; /* Subtle shadow transition */
 }
@@ -272,20 +280,19 @@ input[type="text"]:focus {
 }
 
 #download-container button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.8rem; /* Consistent with base font size */
-    cursor: pointer;
-    border-radius: 5px;
+    background-color: #4CAF50; /* Green background color */
+    border: none; /* No border */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Center align text */
+    text-decoration: none; /* No text decoration */
+    display: inline-block; /* Inline-block display */
+    font-size: 0.8rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
     height: 44px; /* Match the dropdown height */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     transition: box-shadow 0.3s ease; /* Subtle shadow transition */
-
 }
 
 #download-container button:hover {

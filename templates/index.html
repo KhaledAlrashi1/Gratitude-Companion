@@ -2,38 +2,57 @@
 <html>
 <head>
     <title>Gratitude Companion</title>
+    <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome link -->
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Floating decorative elements -->
     <div class="floating floating1"></div>
     <div class="floating floating2"></div>
     <div class="floating floating3"></div>
     <div class="floating floating4"></div>
+    
+    <!-- Main container -->
     <div class="container">
+        <!-- Chat container -->
         <div id="chat-container">
+            <!-- Title container with logo and heading -->
             <div class="title-container">
                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
                 <h1>Gratitude Companion</h1>
             </div>
+            
+            <!-- Loading spinner for greeting message -->
             <div id="loading-greeting" class="spinner">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
-            <p id="initial-message" style="display:none;"></p> <!-- Placeholder for the greeting message -->
+            
+            <!-- Placeholder for the greeting message -->
+            <p id="initial-message" style="display:none;"></p>
+            
+            <!-- Input container for user messages -->
             <div class="input-container">
                 <form id="chatForm" onsubmit="event.preventDefault(); sendMessage();">
                     <input type="text" id="message" name="message" placeholder="Message Gratitude Companion">
                 </form>
             </div>
+            
+            <!-- Loading spinner for chat responses -->
             <div id="loading" class="spinner" style="display:none;">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
+            
+            <!-- Container for chat responses -->
             <div id="response"></div>
-            <div id="download-container"  style="display: none;">
+            
+            <!-- Download container for conversation history -->
+            <div id="download-container" style="display: none;">
                 <select id="download-format">
                     <option value="TXT">TXT</option>
                     <!-- <option value="DOCX">DOCX</option> -->
@@ -44,6 +63,8 @@
             </div>
         </div>
     </div>
+    
+    <!-- Link to external JavaScript file -->
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
