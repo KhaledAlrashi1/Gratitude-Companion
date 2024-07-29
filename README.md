@@ -15,7 +15,7 @@ Why should we practice gratitude? It helps us see the positive aspects of life, 
 
 ---
 
-## User Interface
+## UI / UX
 ![UI_1](/images/UI_1.png)
 ![UI_2](/images/UI_2.png)
 
